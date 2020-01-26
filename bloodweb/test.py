@@ -4,16 +4,16 @@ import pyautogui
 import numpy as np
 from PIL import Image, ImageGrab 
 
-time.sleep(1)
+# time.sleep(1)
 print("start")
 
 # take a screenshot and save it
-# 1 inner screenshot
-pyautogui.screenshot(("00.png"),region=(527,356,314,348))
-# 2 mid screenshot
-pyautogui.screenshot(("01.png"),region=(386,222,569,587))
-# 3 outer screenshot
-pyautogui.screenshot(("02.png"),region=(217,105,976,869))
+# # 1 inner screenshot
+# pyautogui.screenshot(("00.png"),region=(527,356,314,348))
+# # 2 mid screenshot
+# pyautogui.screenshot(("01.png"),region=(386,222,569,587))
+# # 3 outer screenshot
+# pyautogui.screenshot(("02.png"),region=(217,105,976,869))
 
 
 im = cv2.imread("00.png")
@@ -55,8 +55,8 @@ number_circles = str(circles.shape[1])
 print(number_circles)
 print(circles.shape)
 
-cv2.imshow("HoughCirlces", im)
-cv2.waitKey()
-cv2.destroyAllWindows()
+# cv2.imshow("HoughCirlces", im)
+# cv2.waitKey()
+# cv2.destroyAllWindows()
 
 print("end")
