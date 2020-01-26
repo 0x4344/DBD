@@ -1,12 +1,22 @@
 import cv2
-import numpy as np
-import pyautogui
-from PIL import Image, ImageGrab 
 import time
+import pyautogui
+import numpy as np
+from PIL import Image, ImageGrab 
+
+time.sleep(1)
+print("start")
 
 # take a screenshot and save it
-#pyautogui.screenshot("0.png")#,region=(222,97,1170,975))
-im = cv2.imread("r.png")
+# 1 inner screenshot
+pyautogui.screenshot(("00.png"),region=(527,356,314,348))
+# 2 mid screenshot
+pyautogui.screenshot(("01.png"),region=(386,222,569,587))
+# 3 outer screenshot
+pyautogui.screenshot(("02.png"),region=(217,105,976,869))
+
+
+im = cv2.imread("00.png")
 gray_img = cv2.cvtColor(im,	cv2.COLOR_BGR2GRAY)
 img	= cv2.medianBlur(gray_img,	5)
 cimg = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
@@ -26,24 +36,27 @@ for	i in circles[0,:]:
     count += 1
 
 
-
-
 # pyautogui
 def mouse(x,y):
     pyautogui.FAILSAFE = True
-    pyautogui.mouseDown(x=x,y=y,button="left")
-    time.sleep(2)
-    pyautogui.mouseUp(x=x,y=y,button="left")
+    pyautogui.moveTo(x=x,y=y,duration=1)
+    # pyautogui.PAUSE = 1
+    #pyautogui.mouseDown(x=x,y=y,button="left",duration=4)
+    # time.sleep(2)
+    #pyautogui.mouseUp(x=x,y=y,button="left")
 
-# print(circles[(0,0,1)])
+# move the mouse 
 for i in range(circles.shape[1]):
     x,y = circles[(0,i,0)], circles[(0,i,1)]
-    print(x,y)
+    #print(x,y)
     #mouse(x,y)
 
 number_circles = str(circles.shape[1])
-#print(count)
+print(number_circles)
+print(circles.shape)
 
 cv2.imshow("HoughCirlces", im)
 cv2.waitKey()
 cv2.destroyAllWindows()
+
+print("end")
